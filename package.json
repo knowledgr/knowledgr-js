@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/norestlabs/knowledgr-js#readme",
   "dependencies": {
-    "@steemit/rpc-auth": "^1.1.1",
+    "@knowledgr/rpc-auth": "file:../rpc-auth",
     "bigi": "^1.4.2",
     "bluebird": "^3.4.6",
     "browserify-aes": "^1.0.6",
