@@ -1,6 +1,6 @@
 {
-  "name": "@knowledgr/knowledgr-js",
-  "version": "0.7.3",
+  "name": "@nrl-demo/knowledgr-js",
+  "version": "0.7.4",
   "description": "Knowledgr.js the JavaScript API for Knowledgr blockchain",
   "main": "lib/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/norestlabs/knowledgr-js#readme",
   "dependencies": {
-    "@knowledgr/rpc-auth": "file:../rpc-auth",
+    "@nrl-demo/rpc-auth": "^1.1.1",
     "bigi": "^1.4.2",
     "bluebird": "^3.4.6",
     "browserify-aes": "^1.0.6",
@@ -46,6 +46,7 @@
     "detect-node": "^2.0.3",
     "ecurve": "^1.0.5",
     "lodash": "^4.16.4",
+    "retry": "^0.12.0",
     "secure-random": "^1.1.1",
     "ws": "^3.3.2"
   },
