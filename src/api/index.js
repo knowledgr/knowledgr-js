@@ -17,7 +17,7 @@ import {
 } from './transports/http';
 import {
     sign as signRequest
-} from '@knowledgr/rpc-auth';
+} from '@nrl-demo/rpc-auth';
 
 class Steem extends EventEmitter {
     constructor(options = {}) {
