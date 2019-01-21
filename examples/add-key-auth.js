@@ -9,7 +9,7 @@ const privActiveWif = steem.auth.toWif(username, password, 'active');
 steem.broadcast.addKeyAuth({
     signingKey: privActiveWif,
     username,
-    authorizedKey: 'STM88CPfhCmeEzCnvC1Cjc3DNd1DTjkMcmihih8SSxmm4LBqRq5Y9',
+    authorizedKey: 'KWR7YH9c5qkNGZ2u5AnyuKSYDjhDW5taNi6ELLnNxUtRAHVaXBfCq',
     role: 'posting',
   },
   (err, result) => {
