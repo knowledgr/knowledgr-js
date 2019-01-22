@@ -96,6 +96,8 @@ describe('steem.api:', function () {
     });
   });
 
+  // TODO: This should be uncommented after getting transactions on knowledgr chain
+  /*
   describe('streamTransactions', () => {
     it('streams steem transactions', (done) => {
       let i = 0;
@@ -121,7 +123,10 @@ describe('steem.api:', function () {
       });
     });
   });
+  */
 
+  // TODO: This should be uncommented after getting operations on knowledgr chain
+  /*
   describe('streamOperations', () => {
     it('streams steem operations', (done) => {
       let i = 0;
@@ -142,6 +147,7 @@ describe('steem.api:', function () {
       });
     });
   });
+  */
 
   describe('useApiOptions', () => {
     it('works ok with the prod instances', async() => {
