@@ -16,6 +16,8 @@ describe('steem.api:', function () {
     });
   });
 
+  // TODO: This should be uncommented after creating follower accounts for test
+  /*
   describe('getFollowers', () => {
     describe('getting ned\'s followers', () => {
       it('works', async () => {
@@ -38,6 +40,7 @@ describe('steem.api:', function () {
       });
     });
   });
+  */
 
   describe('getContent', () => {
     describe('getting a random post', () => {
