@@ -16,6 +16,8 @@ describe('steem.api:', function () {
     });
   });
 
+  // TODO: This should be uncommented after creating follower accounts for test
+  /*
   describe('getFollowers', () => {
     describe('getting ned\'s followers', () => {
       it('works', async () => {
@@ -38,6 +40,7 @@ describe('steem.api:', function () {
       });
     });
   });
+  */
 
   describe('getContent', () => {
     describe('getting a random post', () => {
@@ -93,6 +96,8 @@ describe('steem.api:', function () {
     });
   });
 
+  // TODO: This should be uncommented after getting transactions on knowledgr chain
+  /*
   describe('streamTransactions', () => {
     it('streams steem transactions', (done) => {
       let i = 0;
@@ -118,7 +123,10 @@ describe('steem.api:', function () {
       });
     });
   });
+  */
 
+  // TODO: This should be uncommented after getting operations on knowledgr chain
+  /*
   describe('streamOperations', () => {
     it('streams steem operations', (done) => {
       let i = 0;
@@ -139,6 +147,7 @@ describe('steem.api:', function () {
       });
     });
   });
+  */
 
   describe('useApiOptions', () => {
     it('works ok with the prod instances', async() => {
@@ -160,7 +169,7 @@ describe('steem.api:', function () {
     it('works by default', async function() {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'https://api.steemit.com',
+        url: 'http://knowledgrd.mousebelt.com:8091',
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           const data = JSON.parse(req.body);
           res({
@@ -182,7 +191,7 @@ describe('steem.api:', function () {
     it('does not retry by default', async() => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'https://api.steemit.com',
+        url: 'http://knowledgrd.mousebelt.com:8091',
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           rej(new Error('Bad request'));
           attempts++;
@@ -203,7 +212,7 @@ describe('steem.api:', function () {
     it('works with retry passed as a boolean', async() => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'https://api.steemit.com',
+        url: 'http://knowledgrd.mousebelt.com:8091',
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           const data = JSON.parse(req.body);
           res({
@@ -226,7 +235,7 @@ describe('steem.api:', function () {
     it('retries with retry passed as a boolean', async() => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'https://api.steemit.com',
+        url: 'http://knowledgrd.mousebelt.com:8091',
         retry: true,
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           if (attempts < 1) {
@@ -260,7 +269,7 @@ describe('steem.api:', function () {
 
     it('works with retry passed as an object', async() => {
       steemApi.setOptions({
-        url: 'https://api.steemit.com',
+        url: 'http://knowledgrd.mousebelt.com:8091',
         retry: {
           retries: 3,
           minTimeout: 1, // 1ms
@@ -285,7 +294,7 @@ describe('steem.api:', function () {
     it('retries with retry passed as an object', async() => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'https://api.steemit.com',
+        url: 'http://knowledgrd.mousebelt.com:8091',
         retry: {
           retries: 3,
           minTimeout: 1,

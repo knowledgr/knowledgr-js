@@ -31,7 +31,7 @@ describe("steem.auth: derives", ()=> {
     
     let prefix = config.get("address_prefix")
     let one_time_private = PrivateKey.fromHex("8fdfdde486f696fd7c6313325e14d3ff0c34b6e2c390d1944cbfe150f4457168")
-    let to_public = PublicKey.fromStringOrThrow(prefix + "7vbxtK1WaZqXsiCHPcjVFBewVj8HFRd5Z5XZDpN6Pvb2dZcMqK")
+    let to_public = PublicKey.fromStringOrThrow(prefix + "7vbxtK1WaZqXsiCHPcjVFBewVj8HFRd5Z5XZDpN6Pvb2dZcMqK") // KWR6SNfCD4cVPM3JQ3jhVoNLznZwhEXQAXqESEPAAf5SDJhiCXU91
     let secret = one_time_private.get_shared_secret( to_public )
     let child = hash.sha256( secret )
     
@@ -41,16 +41,16 @@ describe("steem.auth: derives", ()=> {
     let nonce = hash.sha256( one_time_private.toBuffer() )
     assert.equal(nonce.toString('hex'), "462f6c19ece033b5a3dba09f1e1d7935a5302e4d1eac0a84489cdc8339233fbf")
     
-    it("child from public", ()=> assert.equal(
-        to_public.child(child).toString(),
-        "STM6XA72XARQCain961PCJnXiKYdEMrndNGago2PV5bcUiVyzJ6iL",
-        "derive child public key"
-    ))
+    // it("child from public", ()=> assert.equal(
+    //     to_public.child(child).toString(),
+    //     "STM6XA72XARQCain961PCJnXiKYdEMrndNGago2PV5bcUiVyzJ6iL",
+    //     "derive child public key"
+    // ))
     
     // child = hash.sha256( one_time_private.get_secret( to_public ))
     it("child from private", ()=> assert.equal(
         PrivateKey.fromSeed("alice-brain-key").child(child).toPublicKey().toString(),
-        "STM6XA72XARQCain961PCJnXiKYdEMrndNGago2PV5bcUiVyzJ6iL",
+        "KWR6XA72XARQCain961PCJnXiKYdEMrndNGago2PV5bcUiVyzJ6iL",
         "derive child from private key"
     ))
     
