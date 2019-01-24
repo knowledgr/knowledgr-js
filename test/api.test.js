@@ -11,7 +11,7 @@ describe('steem.api:', function () {
   describe('setOptions', () => {
     it('works', () => {
       let url = steem.config.get('uri');
-      if(! url) url = steem.config.get('websocket');
+      if (!url) url = steem.config.get('websocket');
       steem.api.setOptions({ url: url, useAppbaseApi: true });
     });
   });
@@ -21,6 +21,31 @@ describe('steem.api:', function () {
       it('works', async () => {
         const result = await steem.api.getAccountsAsync(['test1']);
         result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
+  describe('getState', () => {
+    describe('getting state', () => {
+      it('works', async () => {
+        const result = await steem.api.getStateAsync('');
+        should.exist(result);
+        result.should.have.properties([
+          'current_route',
+          'props',
+          'tag_idx',
+          'tags',
+          'content',
+          'accounts',
+          'witnesses',
+          'discussion_idx',
+          'witness_schedule',
+          'error',
+        ]);
       });
 
       it('clears listeners', async () => {
@@ -163,7 +188,7 @@ describe('steem.api:', function () {
   */
 
   describe('useApiOptions', () => {
-    it('works ok with the prod instances', async() => {
+    it('works ok with the prod instances', async () => {
       steem.api.setOptions({ useAppbaseApi: true, url: steem.config.get('uri') });
 
       const result = await steem.api.getContentAsync('yamadapc', 'test-1-2-3-4-5-6-7-9');
@@ -179,7 +204,7 @@ describe('steem.api:', function () {
       steemApi = new api.Steem({});
     });
 
-    it('works by default', async function() {
+    it('works by default', async function () {
       let attempts = 0;
       steemApi.setOptions({
         url: 'http://knowledgrd.mousebelt.com:8091',
@@ -201,7 +226,7 @@ describe('steem.api:', function () {
       assert.deepEqual(result, ['ned']);
     });
 
-    it('does not retry by default', async() => {
+    it('does not retry by default', async () => {
       let attempts = 0;
       steemApi.setOptions({
         url: 'http://knowledgrd.mousebelt.com:8091',
@@ -222,7 +247,7 @@ describe('steem.api:', function () {
       assert.equal(errored, true);
     });
 
-    it('works with retry passed as a boolean', async() => {
+    it('works with retry passed as a boolean', async () => {
       let attempts = 0;
       steemApi.setOptions({
         url: 'http://knowledgrd.mousebelt.com:8091',
@@ -245,7 +270,7 @@ describe('steem.api:', function () {
       assert.deepEqual(result, ['ned']);
     });
 
-    it('retries with retry passed as a boolean', async() => {
+    it('retries with retry passed as a boolean', async () => {
       let attempts = 0;
       steemApi.setOptions({
         url: 'http://knowledgrd.mousebelt.com:8091',
@@ -280,7 +305,7 @@ describe('steem.api:', function () {
       assert.deepEqual(result, ['ned']);
     });
 
-    it('works with retry passed as an object', async() => {
+    it('works with retry passed as an object', async () => {
       steemApi.setOptions({
         url: 'http://knowledgrd.mousebelt.com:8091',
         retry: {
@@ -304,7 +329,7 @@ describe('steem.api:', function () {
       assert.deepEqual(result, ['ned']);
     });
 
-    it('retries with retry passed as an object', async() => {
+    it('retries with retry passed as an object', async () => {
       let attempts = 0;
       steemApi.setOptions({
         url: 'http://knowledgrd.mousebelt.com:8091',
