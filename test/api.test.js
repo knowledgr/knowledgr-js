@@ -29,6 +29,19 @@ describe('steem.api:', function () {
     });
   });
 
+  describe('getOwnerHistory', () => {
+    describe('getting owner history', () => {
+      it('works', async () => {
+        const result = await steem.api.getOwnerHistoryAsync('');
+        result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
   describe('getState', () => {
     describe('getting state', () => {
       it('works', async () => {
