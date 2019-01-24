@@ -93,6 +93,19 @@ describe('steem.api:', function () {
     });
   });
 
+  describe('getWithdrawRoutes', () => {
+    describe('getting the withdraw routes for an account', () => {
+      it('works', async () => {
+        const result = await steem.api.getWithdrawRoutesAsync('test1', 'outgoing');
+        result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
   describe('getFollowCount', () => {
     describe('getting the count of followers/following for an account', () => {
       it('works', async () => {
