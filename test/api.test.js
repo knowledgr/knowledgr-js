@@ -16,6 +16,19 @@ describe('steem.api:', function () {
     });
   });
 
+  describe('getAccounts', () => {
+    describe('getting accounts, queried by name - test1', () => {
+      it('works', async () => {
+        const result = await steem.api.getAccountsAsync(['test1']);
+        result.should.have.lengthOf(1);
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
   // TODO: This should be uncommented after creating follower accounts for test
   /*
   describe('getFollowers', () => {
