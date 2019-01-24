@@ -67,7 +67,7 @@ describe('steem.api:', function () {
     });
   });
 
-  describe('getDiscussionsByTrending', () => {
+  describe('getDiscussions', () => {
     describe('getting discussions by trending', () => {
       it('works', async () => {
         const result = await steem.api.getDiscussionsByTrendingAsync({ "tag":"knowledgr","limit":1 });
