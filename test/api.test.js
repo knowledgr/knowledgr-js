@@ -80,6 +80,25 @@ describe('steem.api:', function () {
     });
   });
 
+  describe('getFollowCount', () => {
+    describe('getting the count of followers/following for an account', () => {
+      it('works', async () => {
+        const result = await steem.api.getFollowCountAsync('test1');
+        should.exist(result);
+        result.should.have.properties([
+          'account',
+          'follower_count',
+          'following_count',
+        ]);
+        assert.equal(result.account, 'test1');
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
   // TODO: This should be uncommented after creating follower accounts for test
   /*
   describe('getFollowers', () => {
