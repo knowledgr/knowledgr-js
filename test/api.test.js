@@ -106,6 +106,30 @@ describe('steem.api:', function () {
     });
   });
 
+  describe('getSavingsWithdraw', () => {
+    describe('getting the savings withdraw from an account', () => {
+      it('works', async () => {
+        const result = await steem.api.getSavingsWithdrawFromAsync('test1');
+        result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+
+    describe('getting the savings withdraw to an account', () => {
+      it('works', async () => {
+        const result = await steem.api.getSavingsWithdrawToAsync('test1');
+        result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
   describe('getFollowCount', () => {
     describe('getting the count of followers/following for an account', () => {
       it('works', async () => {
