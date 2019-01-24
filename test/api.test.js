@@ -70,7 +70,20 @@ describe('steem.api:', function () {
   describe('getDiscussions', () => {
     describe('getting discussions by trending', () => {
       it('works', async () => {
-        const result = await steem.api.getDiscussionsByTrendingAsync({ "tag":"knowledgr","limit":1 });
+        const result = await steem.api.getDiscussionsByTrendingAsync({ tag: 'knowledgr', limit: 1 });
+        result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
+  describe('getOpenOrders', () => {
+    describe('getting the open orders for an account', () => {
+      it('works', async () => {
+        const result = await steem.api.getOpenOrdersAsync('test1');
         result.should.be.an.Array()
       });
 
