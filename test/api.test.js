@@ -67,6 +67,19 @@ describe('steem.api:', function () {
     });
   });
 
+  describe('getDiscussionsByTrending', () => {
+    describe('getting discussions by trending', () => {
+      it('works', async () => {
+        const result = await steem.api.getDiscussionsByTrendingAsync({ "tag":"knowledgr","limit":1 });
+        result.should.be.an.Array()
+      });
+
+      it('clears listeners', async () => {
+        steem.api.listeners('message').should.have.lengthOf(0);
+      });
+    });
+  });
+
   // TODO: This should be uncommented after creating follower accounts for test
   /*
   describe('getFollowers', () => {
