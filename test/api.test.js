@@ -20,7 +20,7 @@ describe('steem.api:', function () {
     describe('getting accounts, queried by name - test1', () => {
       it('works', async () => {
         const result = await steem.api.getAccountsAsync(['test1']);
-        result.should.have.lengthOf(1);
+        result.should.be.an.Array()
       });
 
       it('clears listeners', async () => {
