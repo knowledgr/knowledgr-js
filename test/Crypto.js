@@ -43,7 +43,7 @@ describe("steem.auth: derives", ()=> {
     
     // it("child from public", ()=> assert.equal(
     //     to_public.child(child).toString(),
-    //     "STM6XA72XARQCain961PCJnXiKYdEMrndNGago2PV5bcUiVyzJ6iL",
+    //     "KWR6XA72XARQCain961PCJnXiKYdEMrndNGago2PV5bcUiVyzJ6iL",
     //     "derive child public key"
     // ))
     
