@@ -9,6 +9,17 @@ const postingWif = password
   : '5JRaypasxMx1L97ZUX7YuC5Psb5EAbF821kkAGtBj7xCJFQcbLg';
 
 describe('steem.broadcast:', () => {
+  describe('setOptions', () => {
+    it('works', () => {
+      let url = steem.config.get('uri');
+      if (!url) url = steem.config.get('websocket');
+      steem.api.setOptions({ url: url, useAppbaseApi: true });
+      // console.log(steem.config);
+      // steem.config.setOptions({ 'chain_id': '3ea6e60873c8ad342564b9f4b24def337be8c44509ce81a70d49c9169075dfcf' });
+      // steem.config.setOptions({ 'address_prefix': 'KWR' });
+    });
+  });
+
   it('exists', () => {
     should.exist(steem.broadcast);
   });
@@ -28,6 +39,81 @@ describe('steem.broadcast:', () => {
     should.exist(steem.broadcast.sendAsync);
     should.exist(steem.broadcast.voteAsync);
     should.exist(steem.broadcast.transferAsync);
+  });
+
+  describe('broadcast send test', () => {
+    it('works', async () => {
+
+      const suggestPassword = steem.formatter.createSuggestedPassword();
+      // console.log('------------suggest password: ', suggestPassword);
+      const keys = steem.auth.generateKeys('bbb123', suggestPassword, ['active', 'posting', 'owner', 'memo']);
+      // console.log(keys);
+
+      // const wif = steem.auth.toWif('initminer', 'P5Jv2ZdePou8H1nLGBPUVzRkfVsk6th3LNgij7mWpQcXRw1Dhcfj', 'active');
+      // console.log('---- initminer active wif', wif.toString());
+
+      const payload = {
+        fee: "0.030 KNLG",
+        creator: 'initminer',
+        new_account_name: 'bbb123',
+        "owner": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              // "KWR8jgeh5FRsEn4pJ5Vz2tteQKFa9JeezgrtYsbmXJ3Ya5TXfREWA",
+              keys.owner,
+              1
+            ]
+          ]
+        },
+        "active": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              // "KWR5b8KcTdatUUmW298QSy5Y1p4qKLVnREZ6mE2YgZSi8v5VeBhGo",
+              keys.active,
+              1
+            ]
+          ]
+        },
+        "posting": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              // "KWR5v2naFnAjJDSUDn4wxT3nxR5isGMTnjLLC1C8Sc3HuNcU3hR5Q",
+              keys.posting,
+              1
+            ]
+          ]
+        },
+        // "memo_key": "KWR87AJbZ8WgcQ4m3LF4hbmr4oihi5gM552f2ite1uHuWqtRiUYs2",
+        "memo_key": keys.memo,
+        json_metadata: "{}",
+      };
+      // console.log(payload);
+
+      try {
+        const tx = await steem.broadcast.sendAsync({
+          extensions: [],
+          operations: [
+            ['account_create', payload]
+          ],
+        }, ['5Jv2ZdePou8H1nLGBPUVzRkfVsk6th3LNgij7mWpQcXRw1Dhcfj']);
+
+        tx.should.have.properties([
+          'expiration',
+          'ref_block_num',
+          'ref_block_prefix',
+          'extensions',
+          'operations',
+        ]);
+      } catch (error) {
+        console.log('--- error', error);
+      }
+    });
   });
 
   // TODO: following cases should be updated after checking knowledgr rpc apis for broadcast
@@ -151,17 +237,17 @@ describe('steem.broadcast:', () => {
       ]);
     });
   });
-  */
-  
-  describe('writeOperations', () => {
-    it('receives a properly formatted error response', () => {
-      const wif = steem.auth.toWif('username', 'password', 'posting');
-      return steem.broadcast.voteAsync(wif, 'voter', 'author', 'permlink', 0).
-      then(() => {
-        throw new Error('writeOperation should have failed but it didn\'t');
-      }, (e) => {
-        should.exist(e.message);
-      });
-    });
-  });
+  // */
+
+  // describe('writeOperations', () => {
+  //   it('receives a properly formatted error response', () => {
+  //     const wif = steem.auth.toWif('kgil', 'P5JBjvZu1ExQvw9a7p4hnVRF3fuYjSB62vMEsp1RdjScWoutFpdr', 'posting');
+  //     return steem.broadcast.voteAsync(wif, 'voter', 'author', 'permlink', 0).
+  //       then(() => {
+  //         throw new Error('writeOperation should have failed but it didn\'t');
+  //       }, (e) => {
+  //         should.exist(e.message);
+  //       });
+  //   });
+  // });
 });
