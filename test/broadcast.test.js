@@ -13,7 +13,7 @@ describe('steem.broadcast:', () => {
     it('works', () => {
       let url = steem.config.get('uri');
       if (!url) url = steem.config.get('websocket');
-      steem.api.setOptions({ url: url, useAppbaseApi: true });
+      // steem.api.setOptions({ url: url, useAppbaseApi: true });
       // console.log(steem.config);
       // steem.config.setOptions({ 'chain_id': '3ea6e60873c8ad342564b9f4b24def337be8c44509ce81a70d49c9169075dfcf' });
       // steem.config.setOptions({ 'address_prefix': 'KWR' });
