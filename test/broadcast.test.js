@@ -14,7 +14,7 @@ describe('steem.broadcast:', () => {
       let url = steem.config.get('uri');
       if (!url) url = steem.config.get('websocket');
       steem.api.setOptions({ url: url, useAppbaseApi: true });
-      console.log(steem.config);
+      // console.log(steem.config);
       // steem.config.setOptions({ 'chain_id': '3ea6e60873c8ad342564b9f4b24def337be8c44509ce81a70d49c9169075dfcf' });
       // steem.config.setOptions({ 'address_prefix': 'KWR' });
     });
@@ -45,9 +45,9 @@ describe('steem.broadcast:', () => {
     it('works', async () => {
 
       const suggestPassword = steem.formatter.createSuggestedPassword();
-      console.log('------------suggest password: ', suggestPassword);
+      // console.log('------------suggest password: ', suggestPassword);
       const keys = steem.auth.generateKeys('bbb123', suggestPassword, ['active', 'posting', 'owner', 'memo']);
-      console.log(keys);
+      // console.log(keys);
 
       // const wif = steem.auth.toWif('initminer', 'P5Jv2ZdePou8H1nLGBPUVzRkfVsk6th3LNgij7mWpQcXRw1Dhcfj', 'active');
       // console.log('---- initminer active wif', wif.toString());
@@ -93,7 +93,7 @@ describe('steem.broadcast:', () => {
         "memo_key": keys.memo,
         json_metadata: "{}",
       };
-      console.log(payload);
+      // console.log(payload);
 
       try {
         const tx = await steem.broadcast.sendAsync({
