@@ -45,9 +45,11 @@ describe('steem.broadcast:', () => {
     it('works', async () => {
 
       const suggestPassword = steem.formatter.createSuggestedPassword();
-      // console.log('------------suggest password: ', suggestPassword);
-      const keys = steem.auth.generateKeys('bbb123', suggestPassword, ['active', 'posting', 'owner', 'memo']);
-      // console.log(keys);
+      console.log('------------suggest password: ', suggestPassword);
+      const username = 'testuser' + '-' + Math.floor(Math.random() * 10000);
+      console.log('------------username: ', username);
+      const keys = steem.auth.generateKeys(username, suggestPassword, ['active', 'posting', 'owner', 'memo']);
+      console.log(keys);
 
       // const wif = steem.auth.toWif('initminer', 'P5Jv2ZdePou8H1nLGBPUVzRkfVsk6th3LNgij7mWpQcXRw1Dhcfj', 'active');
       // console.log('---- initminer active wif', wif.toString());
@@ -55,7 +57,7 @@ describe('steem.broadcast:', () => {
       const payload = {
         fee: "0.030 KNLG",
         creator: 'initminer',
-        new_account_name: 'bbb123',
+        new_account_name: username,
         "owner": {
           "weight_threshold": 1,
           "account_auths": [],
