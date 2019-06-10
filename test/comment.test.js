@@ -21,6 +21,7 @@ describe('steem.broadcast:', () => {
     it('works', async () => {
       const permlink = steem.formatter.commentPermlink(username, 'test') + Math.floor(Math.random() * 10000);
       // console.log('------ permlink: ', permlink);
+      const summary = 'This is test summary';
       const operations = [
         ['comment',
           {
@@ -33,7 +34,8 @@ describe('steem.broadcast:', () => {
             // json_metadata: '{}',
             json_metadata: JSON.stringify({
               tags: ['test'],
-              app: `steemjs/${pkg.version}`
+              app: `steemjs/${pkg.version}`,
+              summary
             }),
             type: paramTyes.comment_type.O,
             citations: [
