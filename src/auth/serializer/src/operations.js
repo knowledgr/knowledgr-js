@@ -161,6 +161,13 @@ let vote = new Serializer(
 }
 );
 
+var citation = new Serializer( 
+    "citation", {
+    author: string,
+    permlink: string,
+}
+);
+
 let comment = new Serializer( 
     "comment", {
     parent_author: string,
@@ -169,7 +176,10 @@ let comment = new Serializer(
     permlink: string,
     title: string,
     body: string,
-    json_metadata: string
+    json_metadata: string,
+    type: uint32,
+    citations: array(citation),
+    categories: array(uint32),
 }
 );
 

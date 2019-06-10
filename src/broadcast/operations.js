@@ -19,7 +19,10 @@ module.exports = [
       "permlink",
       "title",
       "body",
-      "json_metadata"
+      "json_metadata",
+      "type",
+      "citations",
+      "categories"
     ]
   },
   {
