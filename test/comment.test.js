@@ -31,13 +31,21 @@ describe('steem.broadcast:', () => {
             title: 'Test',
             body: `This is a test using Steem.js v${pkg.version}.`,
             // json_metadata: '{}',
-            json_metadata : JSON.stringify({
+            json_metadata: JSON.stringify({
               tags: ['test'],
               app: `steemjs/${pkg.version}`
             }),
             type: paramTyes.comment_type.O,
-            citations: [],
-            categories: [paramTyes.expertise_category.logic],
+            citations: [
+              {
+                author: 'kgil',
+                permlink: 're-kgil-test-20190610t062342711z4019'
+              }
+            ],
+            categories: [
+              paramTyes.expertise_category.logic.value,
+              paramTyes.expertise_category.mathematics.value
+            ],
           }
         ],
         ['comment_options', {
@@ -63,7 +71,7 @@ describe('steem.broadcast:', () => {
         { operations, extensions: [] },
         { posting: postingWif }
       );
-      console.log('------ tx: ', tx);
+      // console.log('------ tx: ', tx);
 
       tx.should.have.properties([
         'expiration',
