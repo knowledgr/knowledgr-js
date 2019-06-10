@@ -43,7 +43,7 @@ describe('steem.broadcast:', () => {
         ['comment_options', {
           author: username,
           permlink,
-          max_accepted_payout: '1000000.000 KNLG',
+          max_accepted_payout: '10000.000 KNLG',
           percent_knowledgr_dollars: 10000,
           allow_votes: true,
           allow_curation_rewards: true,

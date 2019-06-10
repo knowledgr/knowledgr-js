@@ -118,19 +118,19 @@ describe('steem.broadcast:', () => {
     });
   });
 
-  // TODO: following cases should be updated after checking knowledgr rpc apis for broadcast
-  /*
   describe('patching transaction with default global properties', () => {
     it('works', async () => {
       const tx = await steem.broadcast._prepareTransaction({
         extensions: [],
         operations: [['vote', {
-          voter: 'yamadapc',
-          author: 'yamadapc',
-          permlink: 'test-1-2-3-4-5-6-7-9',
+          voter: 'oleg',
+          author: 'oleg',
+          permlink: 're-kgil-test-20190610t062300811z1188',
         }]],
       });
 
+      // console.log('------ tx: ', tx);
+
       tx.should.have.properties([
         'expiration',
         'ref_block_num',
@@ -141,115 +141,117 @@ describe('steem.broadcast:', () => {
     });
   });
 
-  describe('downvoting', () => {
-    it('works', async () => {
-      const tx = await steem.broadcast.voteAsync(
-        postingWif,
-        username,
-        'yamadapc',
-        'test-1-2-3-4-5-6-7-9',
-        -1000
-      );
-      tx.should.have.properties([
-        'expiration',
-        'ref_block_num',
-        'ref_block_prefix',
-        'extensions',
-        'operations',
-        'signatures',
-      ]);
-    });
-  });
+  // describe('downvoting', () => {
+  //   it('works', async () => {
+  //     const tx = await steem.broadcast.voteAsync(
+  //       postingWif,
+  //       username,
+  //       'kgil',
+  //       're-kgil-test-20190610t062300811z1188',
+  //       -1000
+  //     );
 
-  describe('voting', () => {
-    beforeEach(() => {
-      return Promise.delay(2000);
-    });
+  //     console.log('------ tx: ', tx);
 
-    it('works', async () => {
-      const tx = await steem.broadcast.voteAsync(
-        postingWif,
-        username,
-        'yamadapc',
-        'test-1-2-3-4-5-6-7-9',
-        10000
-      );
-
-      tx.should.have.properties([
-        'expiration',
-        'ref_block_num',
-        'ref_block_prefix',
-        'extensions',
-        'operations',
-        'signatures',
-      ]);
-    });
-
-    it('works with callbacks', (done) => {
-      steem.broadcast.vote(
-        postingWif,
-        username,
-        'yamadapc',
-        'test-1-2-3-4-5-6-7-9',
-        5000,
-        (err, tx) => {
-          if (err) return done(err);
-          tx.should.have.properties([
-            'expiration',
-            'ref_block_num',
-            'ref_block_prefix',
-            'extensions',
-            'operations',
-            'signatures',
-          ]);
-          done();
-        }
-      );
-    });
-  });
-
-  describe('customJson', () => {
-    before(() => {
-      return Promise.delay(2000);
-    });
-
-    it('works', async () => {
-      const tx = await steem.broadcast.customJsonAsync(
-        postingWif,
-        [],
-        [username],
-        'follow',
-        JSON.stringify([
-          'follow',
-          {
-            follower: username,
-            following: 'fabien',
-            what: ['blog'],
-          },
-        ])
-      );
-
-      tx.should.have.properties([
-        'expiration',
-        'ref_block_num',
-        'ref_block_prefix',
-        'extensions',
-        'operations',
-        'signatures',
-      ]);
-    });
-  });
-  // */
-
-  // describe('writeOperations', () => {
-  //   it('receives a properly formatted error response', () => {
-  //     const wif = steem.auth.toWif('kgil', 'P5JBjvZu1ExQvw9a7p4hnVRF3fuYjSB62vMEsp1RdjScWoutFpdr', 'posting');
-  //     return steem.broadcast.voteAsync(wif, 'voter', 'author', 'permlink', 0).
-  //       then(() => {
-  //         throw new Error('writeOperation should have failed but it didn\'t');
-  //       }, (e) => {
-  //         should.exist(e.message);
-  //       });
+  //     tx.should.have.properties([
+  //       'expiration',
+  //       'ref_block_num',
+  //       'ref_block_prefix',
+  //       'extensions',
+  //       'operations',
+  //       'signatures',
+  //     ]);
   //   });
   // });
+
+  // describe('voting', () => {
+  //   beforeEach(() => {
+  //     return Promise.delay(2000);
+  //   });
+
+  //   it('works', async () => {
+  //     const tx = await steem.broadcast.voteAsync(
+  //       postingWif,
+  //       username,
+  //       'yamadapc',
+  //       'test-1-2-3-4-5-6-7-9',
+  //       10000
+  //     );
+
+  //     tx.should.have.properties([
+  //       'expiration',
+  //       'ref_block_num',
+  //       'ref_block_prefix',
+  //       'extensions',
+  //       'operations',
+  //       'signatures',
+  //     ]);
+  //   });
+
+  //   it('works with callbacks', (done) => {
+  //     steem.broadcast.vote(
+  //       postingWif,
+  //       username,
+  //       'yamadapc',
+  //       'test-1-2-3-4-5-6-7-9',
+  //       5000,
+  //       (err, tx) => {
+  //         if (err) return done(err);
+  //         tx.should.have.properties([
+  //           'expiration',
+  //           'ref_block_num',
+  //           'ref_block_prefix',
+  //           'extensions',
+  //           'operations',
+  //           'signatures',
+  //         ]);
+  //         done();
+  //       }
+  //     );
+  //   });
+  // });
+
+  // describe('customJson', () => {
+  //   before(() => {
+  //     return Promise.delay(2000);
+  //   });
+
+  //   it('works', async () => {
+  //     const tx = await steem.broadcast.customJsonAsync(
+  //       postingWif,
+  //       [],
+  //       [username],
+  //       'follow',
+  //       JSON.stringify([
+  //         'follow',
+  //         {
+  //           follower: username,
+  //           following: 'fabien',
+  //           what: ['blog'],
+  //         },
+  //       ])
+  //     );
+
+  //     tx.should.have.properties([
+  //       'expiration',
+  //       'ref_block_num',
+  //       'ref_block_prefix',
+  //       'extensions',
+  //       'operations',
+  //       'signatures',
+  //     ]);
+  //   });
+  // });
+
+  describe('writeOperations', () => {
+    it('receives a properly formatted error response', () => {
+      const wif = steem.auth.toWif('kgil', 'P5JBjvZu1ExQvw9a7p4hnVRF3fuYjSB62vMEsp1RdjScWoutFpdr', 'posting');
+      return steem.broadcast.voteAsync(wif, 'voter', 'author', 'permlink', 0).
+        then(() => {
+          throw new Error('writeOperation should have failed but it didn\'t');
+        }, (e) => {
+          should.exist(e.message);
+        });
+    });
+  });
 });
