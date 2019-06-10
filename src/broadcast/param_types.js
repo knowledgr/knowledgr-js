@@ -1,0 +1,36 @@
+module.exports = {
+  comment_type: {
+    O: 0,
+    Q: 1,
+    H: 2,
+    R: 3,
+    unknown: 4
+  },
+  expertise_category: {
+		unknown: 0,
+		logic: 1,
+		mathematics: 2,
+		astronomy_and_astrophysics: 3,
+		physics: 4,
+		chemistry: 5,
+		life_sciences: 6,
+		earth_and_space_sciences: 7,
+		agricultural_sciences: 8,
+		medical_sciences: 9,
+		technological_sciences: 10,
+		anthropology: 11,
+		demographics: 12,
+		economic_sciences: 13,
+		geography: 14,
+		history: 15,
+		juridical_sciences_and_law: 16,
+		linguistics: 16,
+		pedagogy: 17,
+		political_science: 18,
+		psychology: 19,
+		science_of_arts_and_letters: 20,
+		sociology: 21,
+		ethics: 22,
+		philosophy: 23,
+  }
+};

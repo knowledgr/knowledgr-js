@@ -161,6 +161,13 @@ let vote = new Serializer(
 }
 );
 
+var citation = new Serializer( 
+    "citation", {
+    author: string,
+    permlink: string,
+}
+);
+
 let comment = new Serializer( 
     "comment", {
     parent_author: string,
@@ -169,7 +176,10 @@ let comment = new Serializer(
     permlink: string,
     title: string,
     body: string,
-    json_metadata: string
+    json_metadata: string,
+    type: uint32,
+    citations: array(citation),
+    categories: array(uint32),
 }
 );
 
@@ -348,7 +358,7 @@ let comment_options = new Serializer(
     author: string,
     permlink: string,
     max_accepted_payout: asset,
-    percent_steem_dollars: uint16,
+    percent_knowledgr_dollars: uint16,
     allow_votes: bool,
     allow_curation_rewards: bool,
     extensions: set(static_variant([
