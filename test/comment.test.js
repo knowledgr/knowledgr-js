@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import should from 'should';
 import steem from '../src';
-import paramTyes from '../src/broadcast/param_types'
+import paramTypes from '../src/broadcast/param_types';
 import pkg from '../package.json';
 
 const username = process.env.STEEM_USERNAME || 'kgil';
@@ -17,6 +17,11 @@ describe('steem.broadcast:', () => {
     before(() => {
       return Promise.delay(2000);
     });
+
+    it('paramTypes', () => {
+      paramTypes.expertise_category[1].should.eql('Logic');
+      paramTypes.comment_type[0].should.eql({ key: 'O', label: 'Observation' })
+    })
 
     it('works', async () => {
       const permlink = steem.formatter.commentPermlink(username, 'test') + Math.floor(Math.random() * 10000);
@@ -37,7 +42,7 @@ describe('steem.broadcast:', () => {
               app: `steemjs/${pkg.version}`,
               summary
             }),
-            type: paramTyes.comment_type.O,
+            type: 0, // O : paramTypes.comment_type[0]
             citations: [
               {
                 author: 'kgil',
@@ -45,8 +50,8 @@ describe('steem.broadcast:', () => {
               }
             ],
             categories: [
-              paramTyes.expertise_category.logic.value,
-              paramTyes.expertise_category.mathematics.value
+              0, // Logic : paramTypes.expertise_category[1]
+              1, // Mathematics  : paramTypes.expertise_category[2]
             ],
           }
         ],
