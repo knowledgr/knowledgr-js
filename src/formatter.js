@@ -1,4 +1,5 @@
 import get from "lodash/get";
+import uuidv4 from "uuid/v4";
 import { key_utils } from "./auth/ecc";
 
 module.exports = steemAPI => {
@@ -186,12 +187,18 @@ module.exports = steemAPI => {
     },
 
     commentPermlink: function(parentAuthor, parentPermlink) {
-      const timeStr = new Date()
-        .toISOString()
-        .replace(/[^a-zA-Z0-9]+/g, "")
-        .toLowerCase();
-      parentPermlink = parentPermlink.replace(/(-\d{8}t\d{9}z)/g, "");
-      return "re-" + parentAuthor + "-" + parentPermlink + "-" + timeStr;
+      // const timeStr = new Date()
+      //   .toISOString()
+      //   .replace(/[^a-zA-Z0-9]+/g, "")
+      //   .toLowerCase();
+      
+      // parentPermlink =  parentPermlink
+      //   .toLowerCase()
+      //   .replace(/[\s,'&!@#$%^*(){}\/]+/g, "")
+      //   .replace(/(-\d{8}t\d{9}z)/g, "");
+      
+      // return "re-" + parentAuthor + "-" + parentPermlink + "-" + timeStr;
+      return uuidv4().replace(/(-)/g, "");
     },
 
     amount: function(amount, asset) {

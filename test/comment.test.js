@@ -24,8 +24,8 @@ describe('steem.broadcast:', () => {
     })
 
     it('works', async () => {
-      const permlink = steem.formatter.commentPermlink(username, 'test') + Math.floor(Math.random() * 10000);
-      // console.log('------ permlink: ', permlink);
+      const permlink = steem.formatter.commentPermlink(username, 'test');
+      console.log('------ permlink: ', permlink);
       const summary = 'This is test summary';
       const operations = [
         ['comment',
