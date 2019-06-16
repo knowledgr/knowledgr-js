@@ -4,11 +4,14 @@ import steem from '../src';
 import paramTypes from '../src/broadcast/param_types';
 import pkg from '../package.json';
 
-const username = process.env.STEEM_USERNAME || 'kgil';
-const password = process.env.STEEM_PASSWORD || 'P5JBjvZu1ExQvw9a7p4hnVRF3fuYjSB62vMEsp1RdjScWoutFpdr';
+const username = process.env.STEEM_USERNAME || 'tenghu';
+const password = process.env.STEEM_PASSWORD || 'password';
 const postingWif = password
   ? steem.auth.toWif(username, password, 'posting')
-  : '5JRaypasxMx1L97ZUX7YuC5Psb5EAbF821kkAGtBj7xCJFQcbLg';
+  : 'posting_key';
+
+const parentAuthor = 'tenghu';
+const parentPermlink = 're-tenghu-te-20190616t062248196z';
 
 describe('steem.broadcast:', () => {
 
@@ -34,18 +37,18 @@ describe('steem.broadcast:', () => {
             author: username,
             permlink,
             title: 'Test',
-            body: `This is a test using Steem.js v${pkg.version}.`,
+            body: `This is a test using Knowledgr.js v${pkg.version}.`,
             // json_metadata: '{}',
             json_metadata: JSON.stringify({
               tags: ['test'],
-              app: `steemjs/${pkg.version}`,
+              app: `knowledgrjs/${pkg.version}`,
               summary
             }),
             type: 0, // O : paramTypes.comment_type[0]
             citations: [
               {
-                author: 'kgil',
-                permlink: 're-kgil-test-20190610t062342711z4019'
+                author: parentAuthor,
+                permlink: parentPermlink
               }
             ],
             categories: [
@@ -64,7 +67,7 @@ describe('steem.broadcast:', () => {
           extensions: [
             [0, {
               beneficiaries: [
-                { account: 'kgil', weight: 2000 },
+                { account: username, weight: 2000 },
                 { account: 'null', weight: 5000 }
               ]
             }]
