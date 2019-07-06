@@ -268,6 +268,14 @@ let account_create = new Serializer(
 }
 );
 
+let account_expertise_update = new Serializer( 
+    "account_expertise_update", {
+    admin: string,
+    account: string,
+    expertises: array(string)
+}
+);
+
 let account_update = new Serializer( 
     "account_update", {
     account: string,
@@ -733,7 +741,7 @@ operation.st_operations = [
   // convert: 8,
   account_create,
   comment_benefactor_reward,//account_admin_update,
-  comment_benefactor_reward,//account_expertise_update,
+  account_expertise_update,
   comment_benefactor_reward,//stake_request,
   comment_benefactor_reward,//stake_process,
   account_update,
