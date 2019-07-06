@@ -125,6 +125,15 @@ module.exports = [
   },
   {
     "roles": ["active", "owner"],
+    "operation": "account_expertise_update",
+    "params": [
+      "admin",
+      "account",
+      "expertises",
+    ]
+  },
+  {
+    "roles": ["active", "owner"],
     "operation": "witness_update",
     "params": [
       "owner",
