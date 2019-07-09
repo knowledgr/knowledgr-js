@@ -44,9 +44,7 @@ describe('steem.broadcast:', () => {
       const payload = {
         admin: username,
         account: 'oleg',
-        expertises: [
-          "logic: 6"
-        ]
+        expertises: [{category: 1, level: 9}] // Logic: 9
       };
       console.log(payload);
 
