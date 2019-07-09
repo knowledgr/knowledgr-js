@@ -129,7 +129,7 @@ module.exports = [
     "params": [
       "admin",
       "account",
-      "expertises",
+      "expertises"
     ]
   },
   {

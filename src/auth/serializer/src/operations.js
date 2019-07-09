@@ -268,11 +268,18 @@ let account_create = new Serializer(
 }
 );
 
-let account_expertise_update = new Serializer( 
+let expertise = new Serializer(
+  "expertise", {
+    category: uint32,
+    level: uint32
+  }
+);
+
+let account_expertise_update = new Serializer(
     "account_expertise_update", {
     admin: string,
     account: string,
-    expertises: array(string)
+    expertises: array(expertise)
 }
 );
 
