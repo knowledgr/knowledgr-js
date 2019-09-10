@@ -1,10 +1,10 @@
 {
   "transport": "http",
-  "websocket": "ws://knowledgrd.mousebelt.com:8092",
-  "uri": "http://knowledgrd.mousebelt.com:8080",
+  "websocket": "ws://knowledgrd.beta.knowledgr.io:8092",
+  "uri": "http://knowledgrd.beta.knowledgr.io:8080",
   "url": "",
-  "dev_uri": "http://knowledgrd.mousebelt.com:8080",
-  "stage_uri": "http://knowledgrd.mousebelt.com:8080",
+  "dev_uri": "http://knowledgrd.beta.knowledgr.io:8080",
+  "stage_uri": "http://knowledgrd.beta.knowledgr.io:8080",
   "address_prefix": "KWR",
   "chain_id": "3ea6e60873c8ad342564b9f4b24def337be8c44509ce81a70d49c9169075dfcf"
 }

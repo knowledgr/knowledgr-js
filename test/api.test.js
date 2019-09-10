@@ -302,7 +302,7 @@ describe('steem.api:', function () {
     it('works by default', async function () {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'http://knowledgrd.mousebelt.com:8091',
+        url: 'http://knowledgrd.beta.knowledgr.io:8091',
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           const data = JSON.parse(req.body);
           res({
@@ -324,7 +324,7 @@ describe('steem.api:', function () {
     it('does not retry by default', async () => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'http://knowledgrd.mousebelt.com:8091',
+        url: 'http://knowledgrd.beta.knowledgr.io:8091',
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           rej(new Error('Bad request'));
           attempts++;
@@ -345,7 +345,7 @@ describe('steem.api:', function () {
     it('works with retry passed as a boolean', async () => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'http://knowledgrd.mousebelt.com:8091',
+        url: 'http://knowledgrd.beta.knowledgr.io:8091',
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           const data = JSON.parse(req.body);
           res({
@@ -368,7 +368,7 @@ describe('steem.api:', function () {
     it('retries with retry passed as a boolean', async () => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'http://knowledgrd.mousebelt.com:8091',
+        url: 'http://knowledgrd.beta.knowledgr.io:8091',
         retry: true,
         fetchMethod: (uri, req) => new Promise((res, rej) => {
           if (attempts < 1) {
@@ -402,7 +402,7 @@ describe('steem.api:', function () {
 
     it('works with retry passed as an object', async () => {
       steemApi.setOptions({
-        url: 'http://knowledgrd.mousebelt.com:8091',
+        url: 'http://knowledgrd.beta.knowledgr.io:8091',
         retry: {
           retries: 3,
           minTimeout: 1, // 1ms
@@ -427,7 +427,7 @@ describe('steem.api:', function () {
     it('retries with retry passed as an object', async () => {
       let attempts = 0;
       steemApi.setOptions({
-        url: 'http://knowledgrd.mousebelt.com:8091',
+        url: 'http://knowledgrd.beta.knowledgr.io:8091',
         retry: {
           retries: 3,
           minTimeout: 1,
