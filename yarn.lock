@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@nrl-demo/libcrypto@^1.0.3":
+"@knowledgr/libcrypto@^1.0.3":
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nrl-demo/libcrypto/-/libcrypto-1.0.3.tgz#e9201f5bd0c2af79e53797a394ad84c5980eca17"
-  integrity sha512-3FJn9nQ2C3qD2OPwEXszO8VWQ9f20eCeTFvs/cJcbQ+cRgtbl9umgxJA+iXtpw6u6ZMJFCnnlzvIaoW/ZXZ1tg==
+  resolved "https://registry.yarnpkg.com/@knowledgr/libcrypto/-/libcrypto-1.0.3.tgz#76f4a63159cf503668adf8ba23c2813d36663ff0"
+  integrity sha512-kLoobiFvZabBAxH3po8j9KyHE7+HS1jlvzINAmkiu9+nOwKP3AP5M/1ZmLbj2vGYatO5e3fdc/w6RvlMeOOfeA==
 
-"@nrl-demo/rpc-auth@^1.1.7":
+"@knowledgr/rpc-auth@^1.1.7":
   version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@nrl-demo/rpc-auth/-/rpc-auth-1.1.7.tgz#9e4a36cc62276a426aead24f3c920091b2cba08b"
-  integrity sha512-FkUozczYko8RIpCvZQbSFu8pj2733C7C6UyQa51qK/Pbrr9hi3bwqTlJwnEqjOJJ74r+lFs4yie9748RDZ3Y0A==
+  resolved "https://registry.yarnpkg.com/@knowledgr/rpc-auth/-/rpc-auth-1.1.7.tgz#d18048d5dbd5a0feea6703559e030ac53a690aea"
+  integrity sha512-2/zaRyvttDWsoEoXN40o/vrFricAhDubKxkGKO5J+i9w6O/CrXvEFR+ld7pXMH37IcrroG0F8aAWCm8cYONSMQ==
   dependencies:
-    "@nrl-demo/libcrypto" "^1.0.3"
+    "@knowledgr/libcrypto" "^1.0.3"
 
 abbrev@1:
   version "1.1.1"
